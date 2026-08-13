@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Times do Campeonato Brasileiro</title>
+</head>
+<body>
+
+    <h2>Cadastro de Times</h2>
+
+    <form id="formTimes">
+        <input type="text" id="time" placeholder="Digite o nome do time">
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <h3>Times cadastrados:</h3>
+    <ul id="listaTimes"></ul>
+
+    <script>
+        let times = [];
+
+        document.getElementById("formTimes").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let time = document.getElementById("time").value;
+
+            if (time !== "" && times.length < 10) {
+                times.push(time);
+                document.getElementById("time").value = "";
+            }
+
+            let lista = document.getElementById("listaTimes");
+            lista.innerHTML = "";
+
+            for (let i = 0; i < times.length; i++) {
+                let item = document.createElement("li");
+                item.textContent = times[i];
+                lista.appendChild(item);
+            }
+        });
+    </script>
+
+</body>
+</html>
